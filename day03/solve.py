@@ -21,23 +21,34 @@ def part1():
         counterpart = len(l) // 2
         first, second = l[counterpart:], l[:counterpart]
 
-        res += get_priority(first, second)
+        res += get_priority([first, second])
 
     print("part1", res)
     
 
+def part2():
+    res = 0
+    for i in range(0, len(content), 3):
+        res += get_priority(content[i:i+3])
+    print("part2", res)
 
-def get_priority(first: str, second: str) -> int:
-    firstset = set(list(first))
-    for ch in second:
-        if ch in firstset:
-            # print(ch, first, second)
+
+
+from typing import List
+def get_priority(groups: List[str]) -> int:
+    sets = []
+    for g in groups[:-1]:
+        sets.append(set(list(g)))
+    
+    for ch in groups[-1]:
+        if all([ch in s for s in sets]):
             return priorities[ch]
 
     raise ValueError("no same character")
 
 
 part1()
+part2()
 
 
 
