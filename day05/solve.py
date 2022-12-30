@@ -19,7 +19,7 @@ def part1() -> str:
             res = move(stks, content[i+1:])
             return "".join(res)
     
-    return "invalid input"
+    raise ValueError("invalid input")
 
 def part2() -> int:
     for i in range(len(content)):
@@ -28,7 +28,7 @@ def part2() -> int:
             res = move_thunk(stks, content[i+1:])
             return "".join(res)
     
-    return "invalid input"
+    raise ValueError("invalid input")
 
 from typing import List
 def parse_stks(content: List[str]) -> List[List[str]]:

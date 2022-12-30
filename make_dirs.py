@@ -1,7 +1,12 @@
 import os
 
-# replace your token
-AOC_COOKIE = os.environ["AOC_COOKIE"]
+try:
+    # replace your token
+    AOC_COOKIE = os.environ["AOC_COOKIE"]
+except KeyError as e:
+    print("""please set your https://adventofcode.com/ cookie as AOC_COOKIE first, like this:
+    export AOC_COOKIE='_ga=GAxxxxxxx; session=yyyyyyyyy; _gid=GAzzzzzzzz'""")
+    exit(1)
 
 solve_template = """# solve file for day{:02d} problem 
 import sys
